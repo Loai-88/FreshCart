@@ -9,14 +9,14 @@ export default function Navbar() {
     let { Cart } = useContext(CartContext)
     // console.log(Cart.numOfCartItems);
 
+    let navigate = useNavigate()
 
     let { UserToken, setUserToken } = useContext(UserContext)
-    let navigate = useNavigate()
 
     function Logout() {
         localStorage.removeItem('UserToken');
-        setUserToken(null);
         navigate('/login');
+        setUserToken(null);
     }
 
 
@@ -65,29 +65,32 @@ export default function Navbar() {
                                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" className='hover:[fill:#fff]' fill="green"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z" /></svg>
                             </Link>
                         </div> */}
-                        <Link to={'/cart'}>
-                            <button data-quantity={Cart.numOfCartItems} className={`${style.btnCart} `}>
-                                <svg className={`${style.iconCart}`} viewBox="0 0 24.38 30.52" height="30.52" width="24.38" xmlns="http://www.w3.org/2000/svg">
-                                    <title>icon-cart</title>
-                                    <path transform="translate(-3.62 -0.85)" d="M28,27.3,26.24,7.51a.75.75,0,0,0-.76-.69h-3.7a6,6,0,0,0-12,0H6.13a.76.76,0,0,0-.76.69L3.62,27.3v.07a4.29,4.29,0,0,0,4.52,4H23.48a4.29,4.29,0,0,0,4.52-4ZM15.81,2.37a4.47,4.47,0,0,1,4.46,4.45H11.35a4.47,4.47,0,0,1,4.46-4.45Zm7.67,27.48H8.13a2.79,2.79,0,0,1-3-2.45L6.83,8.34h3V11a.76.76,0,0,0,1.52,0V8.34h8.92V11a.76.76,0,0,0,1.52,0V8.34h3L26.48,27.4a2.79,2.79,0,0,1-3,2.44Zm0,0" />
-                                </svg>
-                                <span className={style.quantity} />
-                            </button>
-                        </Link>
 
                         <div className='flex gap-3'>
 
                             {
-                                UserToken ? <NavLink onClick={() => Logout()} className={style.animated11}>
-                                    <svg viewBox="0 0 24 24" className={style.arr2} xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" />
-                                    </svg>
-                                    <span className={style.text}>Logout</span>
-                                    <span className={style.circle} />
-                                    <svg viewBox="0 0 24 24" className={style.arr1} xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" />
-                                    </svg>
-                                </NavLink>
+                                UserToken ?
+                                    <>
+                                        <Link to={'/cart'}>
+                                            <button data-quantity={Cart.numOfCartItems} className={`${style.btnCart} `}>
+                                                <svg className={`${style.iconCart}`} viewBox="0 0 24.38 30.52" height="30.52" width="24.38" xmlns="http://www.w3.org/2000/svg">
+                                                    <title>icon-cart</title>
+                                                    <path transform="translate(-3.62 -0.85)" d="M28,27.3,26.24,7.51a.75.75,0,0,0-.76-.69h-3.7a6,6,0,0,0-12,0H6.13a.76.76,0,0,0-.76.69L3.62,27.3v.07a4.29,4.29,0,0,0,4.52,4H23.48a4.29,4.29,0,0,0,4.52-4ZM15.81,2.37a4.47,4.47,0,0,1,4.46,4.45H11.35a4.47,4.47,0,0,1,4.46-4.45Zm7.67,27.48H8.13a2.79,2.79,0,0,1-3-2.45L6.83,8.34h3V11a.76.76,0,0,0,1.52,0V8.34h8.92V11a.76.76,0,0,0,1.52,0V8.34h3L26.48,27.4a2.79,2.79,0,0,1-3,2.44Zm0,0" />
+                                                </svg>
+                                                <span className={style.quantity} />
+                                            </button>
+                                        </Link>
+                                        <a onClick={() => Logout()} className={style.animated11}>
+                                            <svg viewBox="0 0 24 24" className={style.arr2} xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" />
+                                            </svg>
+                                            <span className={style.text}>Logout</span>
+                                            <span className={style.circle} />
+                                            <svg viewBox="0 0 24 24" className={style.arr1} xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" />
+                                            </svg>
+                                        </a>
+                                    </>
                                     : <>
                                         <NavLink to={'login'} className={style.animated}>
                                             <svg viewBox="0 0 24 24" className={style.arr2} xmlns="http://www.w3.org/2000/svg">

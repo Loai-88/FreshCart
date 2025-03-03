@@ -21,6 +21,8 @@ export default function RecentProducts() {
         product.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+    let token = localStorage.getItem('UserToken');
+
     async function getProducts() {
         await axios.get('https://ecommerce.routemisr.com/api/v1/products')
             .then((apiResponse) => {
@@ -36,7 +38,7 @@ export default function RecentProducts() {
 
     useEffect(() => {
         getProducts();
-    }, []);
+    }, [token , localStorage]);
 
     return (
         <>
@@ -125,9 +127,9 @@ export default function RecentProducts() {
                                         <img className='w-full block bg-cover' src={product.imageCover} alt={product.title} />
                                         <div onClick={(e)=>e.stopPropagation()} className='text-main flex justify-between mt-2 font-semibold'><h3>{product.category.name}</h3>
                                             {!wishedItems.includes(product._id) ? <>
-                                                <button className='z-50' onClick={(e) => { AddToWishList(product._id); e.stopPropagation() }}><Heart color='#f13' /></button>
+                                                <button onClick={(e) => { AddToWishList(product._id); e.stopPropagation() }}><Heart color='#f13' /></button>
                                             </> : <>
-                                                <button className='z-50' onClick={(e) => { DeleteProductsFromWishList(product._id); e.stopPropagation() }}><Heart fill='#f13' color='#f13' /></button>
+                                                <button onClick={(e) => { DeleteProductsFromWishList(product._id); e.stopPropagation() }}><Heart fill='#f13' color='#f13' /></button>
                                             </>}
                                         </div>
                                         <h3 className='text-xl font-semibold'>{product.title.split(' ', 2).join(' ')}</h3>

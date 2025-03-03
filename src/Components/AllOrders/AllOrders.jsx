@@ -71,7 +71,7 @@ export default function AllOrders() {
                         <div>
                             <div className='flex flex-wrap'>
                                 {OrderInfo?.map((order, index) => (
-                                    <div className='w-full lg:w-6/12 xl:4/12 p-2 h-auto'>
+                                    <div key={index} className='w-full lg:w-6/12 xl:4/12 p-2 h-auto'>
                                         <div key={order.id} className='rounded-lg bg-gray-200'>
                                             <div className='flex justify-between p-3 rounded-md bg-green-600'>
                                                 <p className='text-md font-semibold'>Order ID : <span className='text-gray-700'>{order.id}</span></p>
@@ -105,7 +105,7 @@ export default function AllOrders() {
                                         </div>
                                     ))}
                                     <div className='flex mt-3 justify-between'>
-                                        <p className='font-bold text-lg text-main'>Total Price : <span className='text-md text-black'>{selectedOrder.totalOrderPrice} EGP</span> </p>
+                                        <p className='font-bold text-lg text-main'>Total Price : <span className='text-md text-red-600'>{selectedOrder.totalOrderPrice} EGP</span> </p>
                                     </div>
                                 </div>
                             </div>
