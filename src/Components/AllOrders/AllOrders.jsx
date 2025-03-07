@@ -72,10 +72,10 @@ export default function AllOrders() {
                             <div className='flex flex-wrap'>
                                 {OrderInfo?.map((order, index) => (
                                     <div key={index} className='w-full lg:w-6/12 xl:4/12 p-2 h-auto'>
-                                        <div key={order.id} className='rounded-lg bg-gray-200'>
+                                        <div key={order?.id} className='rounded-lg bg-gray-200'>
                                             <div className='flex justify-between p-3 rounded-md bg-green-600'>
                                                 <p className='text-md font-semibold'>Order ID : <span className='text-gray-700'>{order.id}</span></p>
-                                                <p className='font-semibold'>{order.paidAt.slice(0, 10)}</p>
+                                                <p className='font-semibold'>{order?.paidAt?.slice(0, 10)}</p>
                                             </div>
                                             <div className='px-2 py-4'>
                                                 <p className='text-lg font-semibold'>Order Price : <span className='text-gray-700'>{order.totalOrderPrice}</span></p>
@@ -98,14 +98,14 @@ export default function AllOrders() {
                                     {selectedOrder?.cartItems?.map((item, index) => (
                                         <div key={index} className='mb-3'>
                                             <div className='flex p-2 justify-between'>
-                                                <p>{index + 1} : {item.product.title.split(' ', 3).join(' ')}</p>
+                                                <p>{index + 1} : {item?.product?.title?.split(' ', 3).join(' ')}</p>
                                                 <p className='text-red-600 font-semibold'>{item.price} EGP</p>
                                             </div>
                                             <hr />
                                         </div>
                                     ))}
                                     <div className='flex mt-3 justify-between'>
-                                        <p className='font-bold text-lg text-main'>Total Price : <span className='text-md text-red-600'>{selectedOrder.totalOrderPrice} EGP</span> </p>
+                                        <p className='font-bold text-lg text-main'>Total Price : <span className='text-md text-red-600'>{selectedOrder?.totalOrderPrice} EGP</span> </p>
                                     </div>
                                 </div>
                             </div>
